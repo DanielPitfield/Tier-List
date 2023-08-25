@@ -1,7 +1,11 @@
 import styles from "../public/styles/Tier.module.scss";
+import TierContainer from "./TierContainer";
+
+export const TierLabels = ["S", "A", "B", "C", "D"] as const;
+export type TierLabel = (typeof TierLabels)[number];
 
 interface TierProps {
-  label: string;
+  label: TierLabel;
 }
 
 const Tier = (props: TierProps) => {
@@ -10,7 +14,7 @@ const Tier = (props: TierProps) => {
       <label className={styles.label} data-label={props.label}>
         {props.label}
       </label>
-      <div className={styles.container}></div>
+      <TierContainer label={props.label} />
     </section>
   );
 };

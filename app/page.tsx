@@ -1,14 +1,12 @@
 import "../public/styles/index.scss";
-import Tier from "./Tier";
+import Tier, { TierLabels } from "./Tier";
 
 const Page = () => {
   return (
     <main>
-      <Tier label="S" />
-      <Tier label="A" />
-      <Tier label="B" />
-      <Tier label="C" />
-      <Tier label="D" />
+      {TierLabels.map((TierLabel) => (
+        <Tier key={TierLabel} label={TierLabel} />
+      ))}
     </main>
   );
 };
