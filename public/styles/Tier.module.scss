@@ -2,9 +2,9 @@
 
 .wrapper {
   display: flex;
-  min-height: 8em;
+  height: 120px;
   background-color: #1a1a17;
-  border: 1px solid darken(#1a1a17, 10%);
+  outline: 1px solid darken(#1a1a17, 10%);
 
   .label {
     display: flex;
@@ -26,14 +26,7 @@
     @each $name, $color in $backgroundColours {
       &[data-label="#{$name}"] {
         background-color: $color;
-        transition: background-color 0.1s ease;
         box-shadow: #0000004d 0px 3px 8px;
-
-        &:hover {
-          font-weight:bold;
-          background-color: lighten($color, 4%);
-          outline: 3px solid black;
-        }
       }
     }
   }
