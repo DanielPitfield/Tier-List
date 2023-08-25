@@ -1,0 +1,42 @@
+@use "sass:map";
+
+.wrapper {
+  display: flex;
+  padding: 5em 0;
+  background-color: #1a1a17;
+  border: 1px solid darken(#1a1a17, 10%);
+
+  .label {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-basis: 10em;
+    border: 1px solid darken(#1a1a17, 10%);
+
+    $backgroundColours: (
+      "S": #ff7f7f,
+      "A": #ffbf7f,
+      "B": #ffdf7f,
+      "C": #ffff7f,
+      "D": #bfff7f,
+    );
+
+    @each $name, $color in $backgroundColours {
+      &[data-label="#{$name}"] {
+        background-color: $color;
+        transition: background-color 0.1s ease;
+        box-shadow: #0000004d 0px 3px 8px;
+
+        &:hover {
+          font-weight:bold;
+          background-color: lighten($color, 4%);
+          outline: 3px solid black;
+        }
+      }
+    }
+  }
+
+  .container {
+    display: flex;
+  }
+}

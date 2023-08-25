@@ -59,12 +59,6 @@ body {
     }
   }
 
-  .conversations {
-    display: flex;
-    justify-content: space-evenly;
-    flex-grow: 1;
-  }
-
   [data-nextjs-scroll-focus-boundary] {
     display: flex;
     flex-grow: 1;
