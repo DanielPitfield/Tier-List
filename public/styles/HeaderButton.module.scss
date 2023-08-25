@@ -1,12 +1,13 @@
 .wrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  margin: 1em;
-  width: 18em;
+  justify-content: center;
+  margin: 0 1.25em;
 
   button {
-    margin-left: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.5em 1em;
     font-family: inherit;
     font-size: inherit;
@@ -14,9 +15,17 @@
     color: white;
     box-shadow: 1px 1px 1px black;
     border: none;
+    border-radius: 2px;
+
     cursor: pointer;
     &:hover {
       background-color: darken(#2d76a0, 10%);
+    }
+
+    .icon {
+      display: flex;
+      justify-content: center;
+      margin-right: 0.25em;
     }
   }
 }

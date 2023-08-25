@@ -24,6 +24,7 @@ body {
     background-color: lighten(black, 20%);
     padding: 1em;
     flex-basis: 4em;
+    outline: 1px solid darken(#1a1a17, 10%);
 
     .title {
       display: flex;

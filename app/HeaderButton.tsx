@@ -11,7 +11,7 @@ const HeaderButton = (props: HeaderButtonProps) => {
   return (
     <div className={styles.wrapper}>
       <button onClick={props.onClick}>
-        <props.icon />
+        <props.icon className={styles.icon} />
         {props.text}
       </button>
     </div>
