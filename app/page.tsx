@@ -51,7 +51,7 @@ const Page = () => {
       const newTiers = tiers.slice();
       let sourceTier = newTiers.find((tier) => tier.label === draggedItemTier);
 
-      if (sourceTier === undefined) {
+      if (!sourceTier) {
         return;
       }
 
@@ -70,7 +70,7 @@ const Page = () => {
     const newTiers = tiers.slice();
     let sourceTier = newTiers.find((tier) => tier.label === draggedItemTier);
 
-    if (sourceTier === undefined) {
+    if (!sourceTier) {
       return;
     }
 

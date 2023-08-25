@@ -2,16 +2,18 @@
 
 .wrapper {
   display: flex;
-  padding: 5em 0;
+  min-height: 8em;
   background-color: #1a1a17;
   border: 1px solid darken(#1a1a17, 10%);
 
   .label {
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    flex-basis: 10em;
-    border: 1px solid darken(#1a1a17, 10%);
+    font-size: 2em;
+    flex-basis: 5em;
+    outline: 1px solid darken(#1a1a17, 10%);
 
     $backgroundColours: (
       "S": #ff7f7f,
