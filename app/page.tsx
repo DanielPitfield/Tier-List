@@ -25,20 +25,21 @@ const Page = () => {
     }
 
     const draggedItem = active.data.current.item as RankableItemTemplate;
+    const draggedItemTier = tiers.find((tier) => tier.items.some((item) => item.id === draggedItem.id))?.label;
 
     // Dragged to the same group (not moved to another group)
-    if (draggedItem.tier === over.id) {
+    if (draggedItemTier === over.id) {
       return;
     }
 
     // From staging area to tier
-    if (!draggedItem.tier) {
+    if (!draggedItemTier) {
       // Remove item from staging area
       SetStagingAreaItems(stagingAreaItems.filter((item) => item.id !== draggedItem.id));
 
       // Add to tier
       const newTiers = tiers.slice();
-      newTiers.find((tier) => tier.label === over.id)?.items.push({ ...draggedItem, tier: over.id as TierLabel });
+      newTiers.find((tier) => tier.label === over.id)?.items.push(draggedItem);
       SetTiers(newTiers);
 
       return;
@@ -48,7 +49,7 @@ const Page = () => {
     if (over.id === "Staging Area") {
       // Remove item from tier
       const newTiers = tiers.slice();
-      let sourceTier = newTiers.find((tier) => tier.label === draggedItem.tier);
+      let sourceTier = newTiers.find((tier) => tier.label === draggedItemTier);
 
       if (sourceTier === undefined) {
         return;
@@ -59,7 +60,7 @@ const Page = () => {
 
       // Add to staging area
       const newStagingAreaItems = stagingAreaItems.slice();
-      newStagingAreaItems.push({ ...draggedItem, tier: null });
+      newStagingAreaItems.push(draggedItem);
       SetStagingAreaItems(newStagingAreaItems);
 
       return;
@@ -67,7 +68,7 @@ const Page = () => {
 
     // Otherwise, from a tier to another tier, so remove item from tier
     const newTiers = tiers.slice();
-    let sourceTier = newTiers.find((tier) => tier.label === draggedItem.tier);
+    let sourceTier = newTiers.find((tier) => tier.label === draggedItemTier);
 
     if (sourceTier === undefined) {
       return;
@@ -76,7 +77,7 @@ const Page = () => {
     sourceTier.items = sourceTier.items.filter((item) => item.id !== draggedItem.id);
 
     // Add to other tier
-    newTiers.find((tier) => tier.label === over.id)?.items.push({ ...draggedItem, tier: over.id as TierLabel });
+    newTiers.find((tier) => tier.label === over.id)?.items.push(draggedItem);
     SetTiers(newTiers);
   }
 
