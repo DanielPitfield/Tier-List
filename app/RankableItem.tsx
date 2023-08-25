@@ -2,11 +2,13 @@ import React from "react";
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import Image, { StaticImageData } from "next/image";
+import { TierLabel } from "./Tier";
 
 export type RankableItemTemplate = {
   id: number;
   image: StaticImageData;
   alt: string;
+  tier: TierLabel | null;
 };
 
 interface RankableItemProps {
@@ -14,7 +16,12 @@ interface RankableItemProps {
 }
 
 const RankableItem = (props: RankableItemProps) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id: props.item.id });
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: props.item.id,
+    data: {
+      item: props.item,
+    },
+  });
 
   const style = {
     transform: CSS.Translate.toString(transform),
