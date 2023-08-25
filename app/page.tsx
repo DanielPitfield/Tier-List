@@ -10,7 +10,7 @@ import { Twice } from "./Data/TwiceMembers";
 import { TierListContext, tierListContextMappings } from "./Data/TierListContextMappings";
 import { Header } from "./Header";
 
-export type TierTemplate = { label: TierLabel | "Staging Area"; items: RankableItemTemplate[] };
+export type TierTemplate = { label: TierLabel; items: RankableItemTemplate[] };
 
 const Page = () => {
   // Each tier (starting with no items)
@@ -41,7 +41,12 @@ const Page = () => {
     const draggedItem = active.data.current.item as RankableItemTemplate;
     const draggedItemTier = tiers.find((tier) => tier.items.some((item) => item.id === draggedItem.id))?.label;
 
-    // Dragged to the same group (not moved to another group)
+    // Dragged within the staging area (not dragged to a tier)
+    if (!draggedItemTier && over.id === "Staging Area") {
+      return;
+    }
+
+    // Dragged to the same tier
     if (draggedItemTier === over.id) {
       return;
     }
