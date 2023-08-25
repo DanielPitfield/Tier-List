@@ -5,8 +5,10 @@ import StagingArea from "./StagingArea";
 import Tier, { TierLabel, TierLabels } from "./Tier";
 import "../public/styles/index.scss";
 import { RankableItemTemplate } from "./RankableItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Twice } from "./Data/twice";
+import { TierListContext, tierListContextMappings } from "./Data/TierListContextMappings";
+import { Header } from "./Header";
 
 export type TierTemplate = { label: TierLabel | "Staging Area"; items: RankableItemTemplate[] };
 
@@ -14,8 +16,20 @@ const Page = () => {
   // Each tier (starting with no items)
   const initialTiers: TierTemplate[] = TierLabels.map((TierLabel) => ({ label: TierLabel, items: [] }));
 
+  const [selectedTierListContext, setSelectedTierListContext] = useState<TierListContext>("Twice");
   const [tiers, SetTiers] = useState<TierTemplate[]>(initialTiers);
   const [stagingAreaItems, SetStagingAreaItems] = useState<RankableItemTemplate[]>(Twice);
+
+  useEffect(() => {
+    reset();
+  }, [selectedTierListContext]);
+
+  function reset() {
+    SetTiers(initialTiers);
+    SetStagingAreaItems(
+      tierListContextMappings.find((x) => x.tierListContext === selectedTierListContext)?.items ?? Twice
+    );
+  }
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
@@ -84,6 +98,14 @@ const Page = () => {
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <main>
+        <Header
+          reset={reset}
+          // TODO: Download image of tier list
+          download={() => {}}
+          onChangeTierListContext={setSelectedTierListContext}
+          selectedTierListContext={selectedTierListContext}
+        />
+
         {TierLabels.map((TierLabel) => (
           <Tier
             key={TierLabel}
@@ -91,6 +113,7 @@ const Page = () => {
             rankableItems={tiers.find((tier) => tier.label === TierLabel)?.items ?? []}
           />
         ))}
+
         <StagingArea rankableItems={stagingAreaItems} />
       </main>
     </DndContext>
