@@ -1,0 +1,78 @@
+html {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #6b8eaa;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lighten(black, 20%);
+    padding: 1em;
+    flex-basis: 4em;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+
+      h1,
+      h2 {
+        color: white;
+        margin: 0;
+        font-weight: normal;
+      }
+
+      h1 {
+        select {
+          font-size: inherit;
+          background: none;
+          color: inherit;
+          text-align: right;
+          margin-right: 0.2em;
+          option {
+            background-color: lighten(black, 20%);
+          }
+        }
+      }
+
+      h2 {
+        margin-left: 1em;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .conversations {
+    display: flex;
+    justify-content: space-evenly;
+    flex-grow: 1;
+  }
+
+  [data-nextjs-scroll-focus-boundary] {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}
