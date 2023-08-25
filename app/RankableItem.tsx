@@ -27,7 +27,7 @@ const RankableItem = (props: RankableItemProps) => {
 
   return (
     <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-      <Image src={props.item.image} alt={props.item.alt} width={120} height={120} />
+      <Image src={props.item.image} alt={props.item.alt} title={props.item.alt} width={120} height={120} />
     </div>
   );
 };
