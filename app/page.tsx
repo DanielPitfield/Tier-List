@@ -6,7 +6,7 @@ import Tier, { TierLabel, TierLabels } from "./Tier";
 import "../public/styles/index.scss";
 import { RankableItemTemplate } from "./RankableItem";
 import { useEffect, useState } from "react";
-import { Twice } from "./Data/twice";
+import { Twice } from "./Data/TwiceMembers";
 import { TierListContext, tierListContextMappings } from "./Data/TierListContextMappings";
 import { Header } from "./Header";
 

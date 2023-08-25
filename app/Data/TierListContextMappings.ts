@@ -1,8 +1,9 @@
 import { RankableItemTemplate } from "../RankableItem";
-import { Twice } from "./twice";
+import { Twice } from "./TwiceMembers";
+import { F1Drivers } from "./F1Drivers";
 
-export const tierListContexts = ["Twice" , "F1"] as const;
-export type TierListContext = typeof tierListContexts[number] ;
+export const tierListContexts = ["Twice", "F1"] as const;
+export type TierListContext = (typeof tierListContexts)[number];
 
 type TierListContextMapping = {
   tierListContext: TierListContext;
@@ -11,6 +12,5 @@ type TierListContextMapping = {
 
 export const tierListContextMappings: TierListContextMapping[] = [
   { tierListContext: "Twice", items: Twice },
-  // TODO: F1 Drivers!
-  { tierListContext: "F1", items: Twice },
+  { tierListContext: "F1", items: F1Drivers },
 ];
