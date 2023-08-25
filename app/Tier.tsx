@@ -1,5 +1,5 @@
-import styles from "../public/styles/Tier.module.scss";
 import TierContainer from "./TierContainer";
+import styles from "../public/styles/Tier.module.scss";
 
 export const TierLabels = ["S", "A", "B", "C", "D"] as const;
 export type TierLabel = (typeof TierLabels)[number];

@@ -1,8 +1,8 @@
 "use client";
 
-import styles from "../public/styles/Tier.module.scss";
 import { useDroppable } from "@dnd-kit/core";
 import { TierLabel } from "./Tier";
+import styles from "../public/styles/Tier.module.scss";
 
 interface TierContainerProps {
   label: TierLabel;
