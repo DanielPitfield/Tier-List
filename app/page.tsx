@@ -19,7 +19,7 @@ const Page = () => {
   // Each tier (starting with no items)
   const initialTiers: TierTemplate[] = TierLabels.map((TierLabel) => ({ label: TierLabel, items: [] }));
 
-  const [selectedTierListContext, setSelectedTierListContext] = useState<TierListContext>("Twice");
+  const [selectedTierListContext, setSelectedTierListContext] = useState<TierListContext>("Twice Members");
   const [tiers, SetTiers] = useState<TierTemplate[]>(initialTiers);
   const [stagingAreaItems, SetStagingAreaItems] = useState<RankableItemTemplate[]>(Twice);
 
@@ -36,23 +36,25 @@ const Page = () => {
   }
 
   // Download an image of the tier list
-  const download = useCallback(() => {
+  const download = useCallback(async () => {
     if (ref.current === null) {
       return;
     }
 
-    toPng(ref.current, { cacheBust: true })
-      .then((dataUrl) => {
-        const link = document.createElement("a");
-        link.download = "my-image-name.png";
-        link.href = dataUrl;
-        link.click();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [ref]);
+    const dataUrl = await toPng(ref.current, { cacheBust: true });
 
+    if (!dataUrl) {
+      return;
+    }
+
+    const link = document.createElement("a");
+    link.href = dataUrl;
+    // Downloaded image's name
+    link.download = `${selectedTierListContext.replaceAll(" ", "-").toLowerCase()}-tier-list.png`;
+    link.click();
+  }, [ref, selectedTierListContext]);
+
+  // What happens after dragging a rankable item?
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
@@ -140,9 +142,9 @@ const Page = () => {
               rankableItems={tiers.find((tier) => tier.label === TierLabel)?.items ?? []}
             />
           ))}
-
-          <StagingArea rankableItems={stagingAreaItems} />
         </div>
+
+        <StagingArea rankableItems={stagingAreaItems} />
       </main>
     </DndContext>
   );
