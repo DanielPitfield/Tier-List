@@ -5,14 +5,17 @@ import StagingArea from "./StagingArea";
 import Tier, { TierLabel, TierLabels } from "./Tier";
 import "../public/styles/index.scss";
 import { RankableItemTemplate } from "./RankableItem";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Twice } from "./Data/TwiceMembers";
 import { TierListContext, tierListContextMappings } from "./Data/TierListContextMappings";
 import { Header } from "./Header";
+import { toPng } from "html-to-image";
 
 export type TierTemplate = { label: TierLabel; items: RankableItemTemplate[] };
 
 const Page = () => {
+  // Reference to the element that is downloaded as an image
+  const ref = useRef<HTMLDivElement>(null);
   // Each tier (starting with no items)
   const initialTiers: TierTemplate[] = TierLabels.map((TierLabel) => ({ label: TierLabel, items: [] }));
 
@@ -24,12 +27,31 @@ const Page = () => {
     reset();
   }, [selectedTierListContext]);
 
+  // Move all items back to the staging area
   function reset() {
     SetTiers(initialTiers);
     SetStagingAreaItems(
       tierListContextMappings.find((x) => x.tierListContext === selectedTierListContext)?.items ?? Twice
     );
   }
+
+  // Download an image of the tier list
+  const download = useCallback(() => {
+    if (ref.current === null) {
+      return;
+    }
+
+    toPng(ref.current, { cacheBust: true })
+      .then((dataUrl) => {
+        const link = document.createElement("a");
+        link.download = "my-image-name.png";
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [ref]);
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
@@ -105,21 +127,22 @@ const Page = () => {
       <main>
         <Header
           reset={reset}
-          // TODO: Download image of tier list
-          download={() => {}}
+          download={download}
           onChangeTierListContext={setSelectedTierListContext}
           selectedTierListContext={selectedTierListContext}
         />
 
-        {TierLabels.map((TierLabel) => (
-          <Tier
-            key={TierLabel}
-            label={TierLabel}
-            rankableItems={tiers.find((tier) => tier.label === TierLabel)?.items ?? []}
-          />
-        ))}
+        <div ref={ref}>
+          {TierLabels.map((TierLabel) => (
+            <Tier
+              key={TierLabel}
+              label={TierLabel}
+              rankableItems={tiers.find((tier) => tier.label === TierLabel)?.items ?? []}
+            />
+          ))}
 
-        <StagingArea rankableItems={stagingAreaItems} />
+          <StagingArea rankableItems={stagingAreaItems} />
+        </div>
       </main>
     </DndContext>
   );
