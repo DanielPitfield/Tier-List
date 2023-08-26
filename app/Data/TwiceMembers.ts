@@ -26,5 +26,4 @@ const TwiceMembersImageObjects: { image: StaticImageData; alt: string }[] = [
 export const Twice: RankableItemTemplate[] = TwiceMembersImageObjects.map((ImageObject, Index) => ({
   id: Index + 1,
   ...ImageObject,
-  tier: null,
 }));

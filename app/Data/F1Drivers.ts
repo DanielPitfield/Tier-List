@@ -48,5 +48,4 @@ const F1DriversImageObjects: { image: StaticImageData; alt: string }[] = [
 export const F1Drivers: RankableItemTemplate[] = F1DriversImageObjects.map((ImageObject, Index) => ({
   id: Index + 1,
   ...ImageObject,
-  tier: null,
 }));

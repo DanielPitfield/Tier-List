@@ -49,7 +49,7 @@ const Page = () => {
 
     const link = document.createElement("a");
     link.href = dataUrl;
-    // Downloaded image's name
+    // The file name of the downloaded image
     link.download = `${selectedTierListContext.replaceAll(" ", "-").toLowerCase()}-tier-list.png`;
     link.click();
   }, [ref, selectedTierListContext]);
