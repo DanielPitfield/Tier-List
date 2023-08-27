@@ -6,7 +6,7 @@ import StagingArea from "./StagingArea";
 import Tier, { TierLabel, TierLabels } from "./Tier";
 import { RankableItemTemplate } from "./RankableItem";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Twice } from "./Data/TwiceMembers";
+import { TwiceMembers } from "./Data/TwiceMembers";
 import { TierListContext, tierListContextMappings } from "./Data/TierListContextMappings";
 import { Header } from "./Header";
 import { toPng } from "html-to-image";
@@ -21,7 +21,7 @@ const Page = () => {
 
   const [selectedTierListContext, setSelectedTierListContext] = useState<TierListContext>("Twice Members");
   const [tiers, SetTiers] = useState<TierTemplate[]>(initialTiers);
-  const [stagingAreaItems, SetStagingAreaItems] = useState<RankableItemTemplate[]>(Twice);
+  const [stagingAreaItems, SetStagingAreaItems] = useState<RankableItemTemplate[]>(TwiceMembers);
 
   useEffect(() => {
     reset();
@@ -31,7 +31,7 @@ const Page = () => {
   function reset() {
     SetTiers(initialTiers);
     SetStagingAreaItems(
-      tierListContextMappings.find((x) => x.tierListContext === selectedTierListContext)?.items ?? Twice
+      tierListContextMappings.find((x) => x.tierListContext === selectedTierListContext)?.items ?? TwiceMembers
     );
   }
 

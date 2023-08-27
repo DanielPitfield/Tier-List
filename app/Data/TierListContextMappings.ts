@@ -1,9 +1,10 @@
 import { RankableItemTemplate } from "../RankableItem";
-import { Twice } from "./TwiceMembers";
-import { Blackpink } from "./BlackpinkMembers";
+import { TwiceMembers } from "./TwiceMembers";
+import { BlackpinkMembers } from "./BlackpinkMembers";
+import { KpopMembers } from "./KpopMembers";
 import { F1Drivers } from "./F1Drivers";
 
-export const tierListContexts = ["Twice Members", "Blackpink Members", "F1 Drivers"] as const;
+export const tierListContexts = ["Twice Members", "Blackpink Members", "Kpop Members", "F1 Drivers"] as const;
 export type TierListContext = (typeof tierListContexts)[number];
 
 type TierListContextMapping = {
@@ -12,7 +13,8 @@ type TierListContextMapping = {
 };
 
 export const tierListContextMappings: TierListContextMapping[] = [
-  { tierListContext: "Twice Members", items: Twice },
-  { tierListContext: "Blackpink Members", items: Blackpink },
+  { tierListContext: "Twice Members", items: TwiceMembers },
+  { tierListContext: "Blackpink Members", items: BlackpinkMembers },
+  { tierListContext: "Kpop Members", items: KpopMembers },
   { tierListContext: "F1 Drivers", items: F1Drivers },
 ];
