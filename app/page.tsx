@@ -10,6 +10,7 @@ import { TwiceMembers } from "./Data/TwiceMembers";
 import { TierListContext, tierListContextMappings } from "./Data/TierListContextMappings";
 import { Header } from "./Header";
 import { toPng } from "html-to-image";
+import { Juicers } from "./Data/Juicers";
 
 export type TierTemplate = { label: TierLabel; items: RankableItemTemplate[] };
 
@@ -19,9 +20,9 @@ const Page = () => {
   // Each tier (starting with no items)
   const initialTiers: TierTemplate[] = TierLabels.map((TierLabel) => ({ label: TierLabel, items: [] }));
 
-  const [selectedTierListContext, setSelectedTierListContext] = useState<TierListContext>("Twice Members");
+  const [selectedTierListContext, setSelectedTierListContext] = useState<TierListContext>("Juicers");
   const [tiers, SetTiers] = useState<TierTemplate[]>(initialTiers);
-  const [stagingAreaItems, SetStagingAreaItems] = useState<RankableItemTemplate[]>(TwiceMembers);
+  const [stagingAreaItems, SetStagingAreaItems] = useState<RankableItemTemplate[]>(Juicers);
 
   useEffect(() => {
     reset();
@@ -30,9 +31,8 @@ const Page = () => {
   // Move all items back to the staging area
   function reset() {
     SetTiers(initialTiers);
-    console.log(tierListContextMappings.find((x) => x.tierListContext === selectedTierListContext)?.items ?? TwiceMembers);
     SetStagingAreaItems(
-      tierListContextMappings.find((x) => x.tierListContext === selectedTierListContext)?.items ?? TwiceMembers
+      tierListContextMappings.find((x) => x.tierListContext === selectedTierListContext)?.items ?? Juicers
     );
   }
 

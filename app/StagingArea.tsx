@@ -13,8 +13,6 @@ const StagingArea = (props: StagingAreaProps) => {
     id: "Staging Area",
   });
 
-  console.log(props.rankableItems);
-
   return (
     <div ref={setNodeRef} className={styles.wrapper}>
       {props.rankableItems.map((rankableItem) => (
