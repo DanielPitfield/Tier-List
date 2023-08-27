@@ -14,6 +14,6 @@ const BlackpinkMembersImageObjects: { image: StaticImageData; alt: string }[] = 
 ];
 
 export const BlackpinkMembers: RankableItemTemplate[] = BlackpinkMembersImageObjects.map((ImageObject, Index) => ({
-  id: Index + 1,
+  id: `${ImageObject.alt}_${Index + 1}`,
   ...ImageObject,
 }));

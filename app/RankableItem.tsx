@@ -4,7 +4,7 @@ import { CSS } from "@dnd-kit/utilities";
 import Image, { StaticImageData } from "next/image";
 
 export type RankableItemTemplate = {
-  id: number;
+  id: string;
   image: StaticImageData;
   alt: string;
 };

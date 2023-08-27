@@ -12,6 +12,6 @@ const KpopMembersImageObjects: { image: StaticImageData; alt: string }[] = [
 ].concat(BlackpinkMembers, TwiceMembers);
 
 export const KpopMembers: RankableItemTemplate[] = KpopMembersImageObjects.map((ImageObject, Index) => ({
-  id: Index + 1,
+  id: `${ImageObject.alt}_${Index + 1}`,
   ...ImageObject,
 }));

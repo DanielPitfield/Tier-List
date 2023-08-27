@@ -30,6 +30,7 @@ const Page = () => {
   // Move all items back to the staging area
   function reset() {
     SetTiers(initialTiers);
+    console.log(tierListContextMappings.find((x) => x.tierListContext === selectedTierListContext)?.items ?? TwiceMembers);
     SetStagingAreaItems(
       tierListContextMappings.find((x) => x.tierListContext === selectedTierListContext)?.items ?? TwiceMembers
     );
