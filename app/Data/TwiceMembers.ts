@@ -1,15 +1,15 @@
 import { RankableItemTemplate } from "../RankableItem";
 import { StaticImageData } from "next/image";
 
-import Jihyo from "../../public/Images/Twice Members/jihyo.png";
-import Momo from "../../public/Images/Twice Members/momo.png";
-import Sana from "../../public/Images/Twice Members/sana.png";
-import Nayeon from "../../public/Images/Twice Members/nayeon.png";
-import Tzuyu from "../../public/Images/Twice Members/tzuyu.png";
-import Mina from "../../public/Images/Twice Members/mina.png";
-import Chaeyoung from "../../public/Images/Twice Members/chaeyoung.png";
-import Jeongyeon from "../../public/Images/Twice Members/jeongyeon.png";
-import Dahyun from "../../public/Images/Twice Members/dahyun.png";
+import Jihyo from "../../public/Images/Twice Members/jihyo.jpg";
+import Momo from "../../public/Images/Twice Members/momo.jpg";
+import Sana from "../../public/Images/Twice Members/sana.jpg";
+import Nayeon from "../../public/Images/Twice Members/nayeon.jpg";
+import Tzuyu from "../../public/Images/Twice Members/tzuyu.jpg";
+import Mina from "../../public/Images/Twice Members/mina.jpg";
+import Chaeyoung from "../../public/Images/Twice Members/chaeyoung.jpg";
+import Jeongyeon from "../../public/Images/Twice Members/jeongyeon.jpg";
+import Dahyun from "../../public/Images/Twice Members/dahyun.jpg";
 
 const TwiceMembersImageObjects: { image: StaticImageData; alt: string }[] = [
   { image: Jihyo, alt: "Jihyo" },
