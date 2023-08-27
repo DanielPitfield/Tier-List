@@ -1,9 +1,9 @@
 "use client";
 
+import "../public/styles/index.scss";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import StagingArea from "./StagingArea";
 import Tier, { TierLabel, TierLabels } from "./Tier";
-import "../public/styles/index.scss";
 import { RankableItemTemplate } from "./RankableItem";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Twice } from "./Data/TwiceMembers";
@@ -56,13 +56,16 @@ const Page = () => {
 
   // What happens after dragging a rankable item?
   function handleDragEnd(event: DragEndEvent) {
+    // The dragged item and the droppable container it was dragged over/moved to
     const { active, over } = event;
 
     if (!active || !over || !active.data.current) {
       return;
     }
 
+    // The data property associated with the dragged item (holds information such as a unique identifier)
     const draggedItem = active.data.current.item as RankableItemTemplate;
+    // What tier was the dragged item dragged from? (if no tier could be found, then it must have been moved from the staging area)
     const draggedItemTier = tiers.find((tier) => tier.items.some((item) => item.id === draggedItem.id))?.label;
 
     // Dragged within the staging area (not dragged to a tier)

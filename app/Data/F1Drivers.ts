@@ -27,7 +27,7 @@ const F1DriversImageObjects: { image: StaticImageData; alt: string }[] = [
   { image: CarlosSainz, alt: "Carlos Sainz" },
   { image: CharlesLeclerc, alt: "Charles Leclerc" },
   { image: DanielRicciardo, alt: "Daniel Ricciardo" },
-  { image: EstebanOcon, alt: "EstebanOcon" },
+  { image: EstebanOcon, alt: "Esteban Ocon" },
   { image: FernandoAlonso, alt: "Fernando Alonso" },
   { image: GeorgeRussell, alt: "George Russell" },
   { image: KevinMagnussen, alt: "Kevin Magnuseen" },
