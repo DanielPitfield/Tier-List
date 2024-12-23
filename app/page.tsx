@@ -1,12 +1,10 @@
 "use client";
 
-import "../public/styles/index.scss";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import StagingArea from "./StagingArea";
 import Tier, { TierLabel, TierLabels } from "./Tier";
 import { RankableItemTemplate } from "./RankableItem";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { TwiceMembers } from "./Data/TwiceMembers";
 import { TierListContext, tierListContextMappings } from "./Data/TierListContextMappings";
 import { Header } from "./Header";
 import { toPng } from "html-to-image";
