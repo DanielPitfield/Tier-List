@@ -34,8 +34,8 @@ const Page = () => {
     );
   }
 
-  // Download an image of the tier list
-  const download = useCallback(async () => {
+  // Screenshot an image of the tier list
+  const screenshotTierList = useCallback(async () => {
     if (ref.current === null) {
       return;
     }
@@ -47,9 +47,14 @@ const Page = () => {
     }
 
     const link = document.createElement("a");
+
+    // Image contents
     link.href = dataUrl;
+
     // The file name of the downloaded image
     link.download = `${selectedTierListContext.replaceAll(" ", "-").toLowerCase()}-tier-list.png`;
+
+    // Download image by clicking the anchor
     link.click();
   }, [ref, selectedTierListContext]);
 
@@ -131,9 +136,10 @@ const Page = () => {
       <main>
         <Header
           reset={reset}
-          download={download}
+          screenshotTierList={screenshotTierList}
           onChangeTierListContext={setSelectedTierListContext}
           selectedTierListContext={selectedTierListContext}
+          hasStarted={tiers.some((tier) => tier.items.length > 0)}
         />
 
         <div ref={ref}>

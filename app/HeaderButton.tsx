@@ -5,16 +5,15 @@ interface HeaderButtonProps {
   text: string;
   icon: IconType;
   onClick: () => void;
+  disabled?: boolean;
 }
 
 const HeaderButton = (props: HeaderButtonProps) => {
   return (
-    <div className={styles.wrapper}>
-      <button onClick={props.onClick}>
-        <props.icon className={styles.icon} />
-        {props.text}
-      </button>
-    </div>
+    <button className={styles.button} onClick={props.onClick} disabled={props.disabled}>
+      <props.icon className={styles.icon} />
+      {props.text}
+    </button>
   );
 };
 

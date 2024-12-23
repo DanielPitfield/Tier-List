@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "../public/styles/Tier.module.scss";
 import RankableItem, { RankableItemTemplate } from "./RankableItem";
 import { useDroppable } from "@dnd-kit/core";

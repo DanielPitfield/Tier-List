@@ -1,20 +1,21 @@
 import React from "react";
 import HeaderButton from "./HeaderButton";
 import { FiRefreshCw } from "react-icons/fi";
-import { FiDownload } from "react-icons/fi";
+import { FiCamera } from "react-icons/fi";
 import { TierListContext, tierListContextMappings } from "./Data/TierListContextMappings";
 
 interface HeaderProps {
   reset: () => void;
-  download: () => void;
+  screenshotTierList: () => void;
   onChangeTierListContext: (tierListContext: TierListContext) => void;
   selectedTierListContext: TierListContext;
+  hasStarted: boolean;
 }
 
 export const Header = (props: HeaderProps) => {
   return (
     <header>
-      <HeaderButton text={"Reset"} icon={FiRefreshCw} onClick={props.reset} />
+      <HeaderButton text={"Reset"} icon={FiRefreshCw} onClick={props.reset} disabled={!props.hasStarted} />
 
       <div className="title">
         <h1>
@@ -32,7 +33,12 @@ export const Header = (props: HeaderProps) => {
         </h1>
       </div>
 
-      <HeaderButton text={"Download"} icon={FiDownload} onClick={props.download} />
+      <HeaderButton
+        text={"Screenshot"}
+        icon={FiCamera}
+        onClick={props.screenshotTierList}
+        disabled={!props.hasStarted}
+      />
     </header>
   );
 };
