@@ -6,4 +6,4 @@ Rank items in tiers from best to worst
 ![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
-![Tier List](https://raw.githubusercontent.com/DanielPitfield/danielpitfield.github.io/main/public/Images/Projects/tierList.png)
+![Tier List](https://pitsy.dev/Images/Projects/tierList.png)
