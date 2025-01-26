@@ -1,10 +1,11 @@
+@use "sass:color";
 @use "sass:map";
 
 .wrapper {
   display: flex;
   min-height: 120px;
   background-color: #1a1a17;
-  outline: 1px solid darken(#1a1a17, 10%);
+  outline: 1px solid color.adjust(#1a1a17, $lightness: -10%);
 
   .label {
     display: flex;
@@ -14,7 +15,7 @@
     font-size: 2em;
     flex-basis: 5em;
     flex-shrink: 0;
-    outline: 1px solid darken(#1a1a17, 10%);
+    outline: 1px solid color.adjust(#1a1a17, $lightness: -10%);
 
     $backgroundColours: (
       "S": #ff7f7f,

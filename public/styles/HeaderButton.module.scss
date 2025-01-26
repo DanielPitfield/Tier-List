@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .button {
   display: flex;
   align-items: center;
@@ -14,7 +16,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: darken(#2d76a0, 10%);
+    background-color: color.adjust(#2d76a0, $lightness: -10%);
   }
 
   &:disabled {

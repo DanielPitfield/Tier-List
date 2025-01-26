@@ -1,3 +1,5 @@
+@use "sass:color";
+
 html {
   display: flex;
   flex-direction: column;
@@ -21,10 +23,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: lighten(black, 20%);
+    background-color: color.adjust(black, $lightness: 20%);
     padding: 1em;
     flex-basis: 4em;
-    outline: 1px solid darken(#1a1a17, 10%);
+    outline: 1px solid color.adjust(#1a1a17, $lightness: -10%);
 
     .title {
       display: flex;
@@ -48,7 +50,7 @@ body {
           text-align: center;
           margin-right: 0.2em;
           option {
-            background-color: lighten(black, 20%);
+            background-color: color.adjust(black, $lightness: 20%);
           }
         }
       }
