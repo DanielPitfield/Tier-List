@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Tier List",
-  description: "",
+  description: "Rank items in tiers from best to worst",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
